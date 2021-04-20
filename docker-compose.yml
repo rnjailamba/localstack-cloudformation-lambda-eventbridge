@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack}"
+    image: localstack/localstack:latest
+    networks:
+      - mynet
+    ports:
+      - "4566-4599:4566-4599"
+      - 443:443
+    environment:
+      - SERVICES=lambda,cognito,apigateway,cloudformation,sqs,sns,events,stepfunctions,s3,serverless,firehose,es
+      - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY}
+      - DEBUG=1
+      - LOCALSTACK_HOSTNAME=localhost
+      - DATA_DIR=/tmp/localstack/data
+      - LAMBDA_EXECUTOR=docker-reuse
+      - LAMBDA_REMOTE_DOCKER=false
+      - LAMBDA_DOCKER_NETWORK=host
+      - LAMBDA_REMOVE_CONTAINERS=true
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=/tmp/localstack
+    volumes:
+      - "/tmp/localstack:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./bin:/docker-entrypoint-initaws.d
+networks:
+  mynet:
+    name: mynet
