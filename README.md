@@ -23,7 +23,8 @@ response.json;
 5. This happened on line 35 of `atmProducer/handler.js` which puts an event
   `const result = await eventbridge.putEvents(params).promise()`
 for eventbridge initialised as
-```const eventbridge = new AWS.EventBridge({
+```
+const eventbridge = new AWS.EventBridge({
     endpoint: 'http://localhost:4566'
   }
 )```
