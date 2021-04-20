@@ -27,4 +27,5 @@ for eventbridge initialised as
 const eventbridge = new AWS.EventBridge({
     endpoint: 'http://localhost:4566'
   }
-)```
+)
+```
