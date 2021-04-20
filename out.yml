@@ -1,21 +1,19 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: myATMapp
-  
 Globals:
   Function:
     Timeout: 50
-
 Resources:
   atmProducerFn:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: atmProducer/
+      CodeUri: s3://lambda-artifacts-cde7b0cc38a67feb/a6b4b879ff171bb95ff6fa283e09ce4d
       Handler: handler.lambdaHandler
       Runtime: nodejs12.x
       Policies:
-        - Statement:
-          - Effect: Allow
-            Resource: '*'
-            Action:
-              - events:PutEvents      
+      - Statement:
+        - Effect: Allow
+          Resource: '*'
+          Action:
+          - events:PutEvents
