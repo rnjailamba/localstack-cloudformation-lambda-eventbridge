@@ -15,10 +15,10 @@
 
 const AWS = require('aws-sdk')
 AWS.config.region = process.env.AWS_REGION || 'us-east-1'
-AWS.config.endpoint = process.env.AWS_ENDPOINT || 'http://localhost:4566'
+// AWS.config.endpoint = process.env.AWS_ENDPOINT || 'http://localhost:4566'
 
 const eventbridge = new AWS.EventBridge({
-    endpoint: 'http://localhost:4566'
+    // endpoint: 'http://localhost:4566'
   }
 )
 
