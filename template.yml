@@ -51,4 +51,7 @@ Resources:
             Method: GET
             ApiId: !Ref HttpApi
             PayloadFormatVersion: '2.0'
-            TimeoutInMillis: 29000                         
+            TimeoutInMillis: 29000        
+Outputs:
+  apiGatewayInvokeURL:
+    Value: !Sub https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com/
